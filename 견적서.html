@@ -24,6 +24,13 @@ body{padding:8px;overflow-y:auto}
 
 /* 상단 정보 박스 */
 .top-box{display:flex;flex-wrap:wrap;border:1px solid #333;margin:8px 0}
+.top-table{width:100%;border-collapse:collapse;border:1px solid #333;margin:8px 0;table-layout:fixed}
+.top-table td{border:1px solid #333;padding:3px 4px;vertical-align:middle;word-break:break-all}
+.top-left-cell{width:35%;text-align:center;padding:6px 4px}
+.top-table .s-lbl{background:#f0f0f0;font-weight:600;text-align:center;width:14px;font-size:10px;word-break:break-all;line-height:1.4;padding:2px}
+.top-table .s-lbl2{background:#f0f0f0;font-weight:600;text-align:center;white-space:normal;font-size:9px;width:30px;line-height:1.3;word-break:keep-all}
+.top-table .stamp-cell{position:relative;width:52px;font-size:9px;font-weight:600}
+.top-table .stamp-img{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;z-index:5}
 .top-left{flex:1;min-width:0;border-right:none;border-bottom:1px solid #333;padding:6px 8px;display:flex;flex-direction:column;gap:4px;justify-content:center;align-items:center}
 .top-left-row{font-size:12px;font-weight:600;color:#333;text-align:center}
 .top-left-row input{border:none;outline:none;font-size:12px;font-weight:600;text-align:center;background:transparent;color:#333;width:180px}
@@ -116,44 +123,39 @@ body{padding:8px;overflow-y:auto}
   <div class="q-title">견 &nbsp; 적 &nbsp; 서</div>
 
   <!-- 상단 박스 -->
-  <div class="top-box">
-    <div class="top-left">
-      <div class="top-left-row" id="date-label"></div>
-      <div class="top-left-row" style="margin-top:8px">
-        <input id="receiver" placeholder="수신처" style="width:160px;text-align:center">
-      </div>
-      <div class="top-left-row" style="font-size:11px;color:#555;margin-top:4px">귀하</div>
-      <div class="top-left-row" style="margin-top:6px;font-size:11px">아래와 같이 견적합니다.</div>
-    </div>
-    <div class="top-right">
-      <table class="sup-table">
-        <tr>
-          <td class="s-lbl" rowspan="5">공<br>급<br>자</td>
-          <td class="s-lbl2">등록번호</td>
-          <td colspan="3" id="s-regno">128-27-25887</td>
-        </tr>
-        <tr>
-          <td class="s-lbl2">상호</td>
-          <td colspan="2" id="s-name">선우 컴퓨터<br><span style="font-size:10px">(늑대와여우컴퓨터)</span></td>
-          <td class="stamp-cell">대표 박 상 현<img class="stamp-img" id="stamp-img" src="" alt=""></td>
-        </tr>
-        <tr>
-          <td class="s-lbl2">주소</td>
-          <td colspan="3" id="s-addr">경기 파주시 조리읍 고봉로 142-3</td>
-        </tr>
-        <tr>
-          <td class="s-lbl2">업태</td>
-          <td id="s-biz">서비스</td>
-          <td class="s-lbl2">종목</td>
-          <td>컴퓨터</td>
-        </tr>
-        <tr>
-          <td class="s-lbl2">전화</td>
-          <td colspan="3" id="s-tel">946-1357 / 010-3346-0424</td>
-        </tr>
-      </table>
-    </div>
-  </div>
+  <table class="top-table">
+    <tr>
+      <td class="top-left-cell" rowspan="4">
+        <div id="date-label" style="font-size:12px;font-weight:600;margin-bottom:6px"></div>
+        <input id="receiver" placeholder="수신처" style="border:none;outline:none;font-size:12px;font-weight:600;text-align:center;background:transparent;color:#333;width:100%">
+        <div style="font-size:11px;margin-top:4px">귀하</div>
+        <div style="font-size:11px;margin-top:6px">아래와 같이 견적합니다.</div>
+      </td>
+      <td class="s-lbl" rowspan="5">공<br>급<br>자</td>
+      <td class="s-lbl2">등록번호</td>
+      <td colspan="3" id="s-regno" style="font-size:11px">128-27-25887</td>
+    </tr>
+    <tr>
+      <td class="s-lbl2">상호</td>
+      <td colspan="2" id="s-name" style="font-size:11px">선우 컴퓨터<br><span style="font-size:9px">(늑대와여우컴퓨터)</span></td>
+      <td class="stamp-cell">대표 박상현<img class="stamp-img" id="stamp-img" src="" alt=""></td>
+    </tr>
+    <tr>
+      <td class="s-lbl2">주소</td>
+      <td colspan="3" id="s-addr" style="font-size:10px">경기 파주시 조리읍 고봉로 142-3</td>
+    </tr>
+    <tr>
+      <td class="s-lbl2">업태</td>
+      <td id="s-biz" style="font-size:11px">서비스</td>
+      <td class="s-lbl2">종목</td>
+      <td style="font-size:11px">컴퓨터</td>
+    </tr>
+    <tr>
+      <td colspan="1" style="border:none"></td>
+      <td class="s-lbl2">전화</td>
+      <td colspan="3" id="s-tel" style="font-size:10px">946-1357 / 010-3346-0424</td>
+    </tr>
+  </table>
 
   <!-- 금액 -->
   <div class="amount-row">
@@ -250,7 +252,7 @@ function changeSupplier(){
   document.getElementById('s-regno').textContent=s.regno||'128-27-25887';
   // 도장 다시 붙이기
   const sc=document.querySelector('.stamp-cell');
-  sc.innerHTML='대표 박 상 현<img class="stamp-img" id="stamp-img" src="'+stampSrc+'" alt="">';
+  if(sc){ sc.innerHTML='대표 박상현<img class="stamp-img" id="stamp-img" src="'+stampSrc+'" alt="">'; }
 }
 
 const stampSrc=document.getElementById('stamp-img').src;
