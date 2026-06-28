@@ -27,7 +27,7 @@ body{padding:8px;overflow-y:auto}
 .top-table{width:100%;border-collapse:collapse;border:1px solid #333;margin:8px 0;table-layout:fixed}
 .top-table td{border:1px solid #333;padding:3px 4px;vertical-align:middle;word-break:break-all}
 .top-left-cell{width:35%;text-align:center;padding:6px 4px}
-.top-table .s-lbl{background:#f0f0f0;font-weight:600;text-align:center;width:14px;font-size:10px;word-break:break-all;line-height:1.4;padding:2px}
+.top-table .s-lbl{background:#f0f0f0;font-weight:600;text-align:center;width:28px;font-size:11px;word-break:break-all;line-height:1.6;padding:2px}
 .top-table .s-lbl2{background:#f0f0f0;font-weight:600;text-align:center;white-space:normal;font-size:9px;width:30px;line-height:1.3;word-break:keep-all}
 .top-table .stamp-cell{position:relative;width:52px;font-size:9px;font-weight:600}
 .top-table .stamp-img{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;z-index:5}
@@ -132,7 +132,7 @@ body{padding:8px;overflow-y:auto}
         <div style="font-size:11px;margin-top:6px">아래와 같이 견적합니다.</div>
       </td>
       <td class="s-lbl" rowspan="5">공<br>급<br>자</td>
-      <td class="s-lbl2">등록번호</td>
+      <td class="s-lbl2">등록<br>번호</td>
       <td colspan="3" id="s-regno" style="font-size:11px">128-27-25887</td>
     </tr>
     <tr>
@@ -276,10 +276,10 @@ function buildRows(){
   rowIds=[];
   if(currentMode==='default'){
     DEFAULT_ITEMS.forEach(name=>addRowWith(name,' ',' '));
-    // 추가 빈 행 13개
-    for(let i=0;i<13;i++) addRowWith(' ',' ',' ');
+    // 추가 빈 행 11개
+    for(let i=0;i<11;i++) addRowWith(' ',' ',' ');
   } else {
-    for(let i=0;i<24;i++) addRowWith(' ',' ',' ');
+    for(let i=0;i<22;i++) addRowWith(' ',' ',' ');
   }
   // 계좌 행
   const s=suppliers[document.getElementById('supplier-sel').value];
