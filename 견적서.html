@@ -15,31 +15,31 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:#e8e8e8;width:100%}
 body{padding:8px;overflow-y:auto}
 
 /* A4 비율 컨테이너 */
-.page-wrap{width:100%;max-width:600px;margin:0 auto}
+.page-wrap{width:100%;margin:0 auto}
 
-.quote{background:#fff;border:1px solid #333;padding:16px;width:100%;font-size:12px}
+.quote{background:#fff;border:1px solid #333;padding:8px;width:100%;font-size:11px;overflow-x:hidden}
 
 /* 타이틀 */
 .q-title{text-align:center;font-size:32px;font-weight:700;letter-spacing:16px;padding:16px 0 20px;border-bottom:2px solid #333}
 
 /* 상단 정보 박스 */
-.top-box{display:flex;border:1px solid #333;margin:12px 0}
-.top-left{flex:1;border-right:1px solid #333;padding:8px 10px;display:flex;flex-direction:column;gap:6px;justify-content:center;align-items:center}
+.top-box{display:flex;flex-wrap:wrap;border:1px solid #333;margin:8px 0}
+.top-left{flex:1;min-width:0;border-right:none;border-bottom:1px solid #333;padding:6px 8px;display:flex;flex-direction:column;gap:4px;justify-content:center;align-items:center}
 .top-left-row{font-size:12px;font-weight:600;color:#333;text-align:center}
 .top-left-row input{border:none;outline:none;font-size:12px;font-weight:600;text-align:center;background:transparent;color:#333;width:180px}
-.top-right{flex:1}
+.top-right{flex:1;min-width:0;width:100%}
 
 /* 공급자 테이블 */
-.sup-table{width:100%;border-collapse:collapse;height:100%}
-.sup-table td{border:1px solid #333;padding:3px 5px;vertical-align:middle;font-size:11px}
+.sup-table{width:100%;border-collapse:collapse;height:100%;table-layout:fixed}
+.sup-table td{border:1px solid #333;padding:2px 3px;vertical-align:middle;font-size:10px}
 .sup-table td:first-child{border-left:none}
 .sup-table tr:first-child td{border-top:none}
 .sup-table tr:last-child td{border-bottom:none}
 .sup-table td:last-child{border-right:none}
-.s-lbl{background:#f0f0f0;font-weight:600;text-align:center;white-space:nowrap;width:28px;font-size:10px;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:2px}
-.s-lbl2{background:#f0f0f0;font-weight:600;text-align:center;white-space:nowrap;font-size:10px;width:42px}
-.stamp-cell{position:relative;width:70px;font-size:11px;font-weight:600}
-.stamp-img{position:absolute;right:0;top:50%;transform:translateY(-50%);width:52px;height:52px;z-index:5}
+.s-lbl{background:#f0f0f0;font-weight:600;text-align:center;width:16px;font-size:10px;word-break:break-all;line-height:1.4;padding:2px}
+.s-lbl2{background:#f0f0f0;font-weight:600;text-align:center;white-space:normal;word-break:keep-all;font-size:9px;width:34px;line-height:1.3}
+.stamp-cell{position:relative;width:60px;font-size:10px;font-weight:600}
+.stamp-img{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;z-index:5}
 
 /* 금액 행 */
 .amount-row{border:1px solid #333;border-top:none;padding:6px 10px;font-size:13px;font-weight:600}
@@ -50,8 +50,8 @@ body{padding:8px;overflow-y:auto}
 .items-table{width:100%;border-collapse:collapse;table-layout:fixed}
 .items-table th{border:1px solid #333;background:#f0f0f0;font-size:11px;font-weight:600;padding:5px 3px;text-align:center}
 .items-table td{border:1px solid #333;padding:3px 4px;height:28px;vertical-align:middle}
-.items-table td input{border:none;outline:none;width:100%;font-size:11px;background:transparent;color:#333;padding:1px 0;padding-left:5px}
-.items-table td input.right{text-align:right;padding-left:0;padding-right:5px}
+.items-table td input{border:none;outline:none;width:100%;font-size:11px;background:transparent;color:#333;padding:1px 0;padding-left:10px}
+.items-table td input.right{text-align:right;padding-left:0;padding-right:10px}
 .items-table .sub{font-size:11px;text-align:right;color:#333;padding-right:5px;vertical-align:middle}
 .items-table tr:first-child td{border-top:none}
 .items-table td:first-child{border-left:none}
@@ -129,7 +129,7 @@ body{padding:8px;overflow-y:auto}
       <table class="sup-table">
         <tr>
           <td class="s-lbl" rowspan="5">공<br>급<br>자</td>
-          <td class="s-lbl2">등 록 번 호</td>
+          <td class="s-lbl2">등록번호</td>
           <td colspan="3" id="s-regno">128-27-25887</td>
         </tr>
         <tr>
@@ -274,10 +274,10 @@ function buildRows(){
   rowIds=[];
   if(currentMode==='default'){
     DEFAULT_ITEMS.forEach(name=>addRowWith(name,' ',' '));
-    // 추가 빈 행 3개
-    for(let i=0;i<3;i++) addRowWith(' ',' ',' ');
+    // 추가 빈 행 13개
+    for(let i=0;i<13;i++) addRowWith(' ',' ',' ');
   } else {
-    for(let i=0;i<14;i++) addRowWith(' ',' ',' ');
+    for(let i=0;i<24;i++) addRowWith(' ',' ',' ');
   }
   // 계좌 행
   const s=suppliers[document.getElementById('supplier-sel').value];
